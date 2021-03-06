@@ -19,6 +19,9 @@ export class MailService {
     form.append('to', `eric.yang@kakao.com`);
     form.append('subject', subject);
     form.append('text', content);
+    form.append('template', 'verify-email');
+    form.append('v:code', 'asasas');
+    form.append('v:username', 'eric!!!');
     const response = await got(
       `https://api.mailgun.net/v3/${this.options.domain}/messages`,
       {
