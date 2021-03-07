@@ -65,8 +65,8 @@ export class UserService {
       }
       const token = this.jwtService.sign(user.id);
       return { ok: true, token };
-    } catch (error) {
-      return { ok: false, error };
+    } catch (e) {
+      return { ok: false, error: "Couldn't login" };
     }
   }
 
