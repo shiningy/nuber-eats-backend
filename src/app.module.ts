@@ -9,7 +9,6 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as Joi from 'joi';
 import { UsersModule } from './users/users.module';
-import { CommonModule } from './common/common.module';
 import { User } from './users/entities/user.entity';
 import { JwtModule } from './jwt/jwt.module';
 import { JwtMiddleware } from './jwt/jwt.middleware';
@@ -20,9 +19,9 @@ import { Restaurant } from './restaurants/entities/restaurant.entity';
 import { Category } from './restaurants/entities/category.entity';
 import { RestaurantsModule } from './restaurants/restaurants.module';
 import { Dish } from './restaurants/entities/dish.entity';
-import { OrderModule } from './order/order.module';
-import { Order } from './order/entities/order.entity';
-import { OrderItem } from './order/entities/order-item.entity';
+import { OrdersModule } from './orders/orders.module';
+import { Order } from './orders/entities/order.entity';
+import { OrderItem } from './orders/entities/order-item.entity';
 
 @Module({
   imports: [
@@ -78,7 +77,7 @@ import { OrderItem } from './order/entities/order-item.entity';
     AuthModule,
     UsersModule,
     RestaurantsModule,
-    OrderModule,
+    OrdersModule,
   ],
   controllers: [],
   providers: [],
