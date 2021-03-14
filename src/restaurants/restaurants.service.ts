@@ -237,7 +237,7 @@ export class RestaurantService {
     }
   }
 
-  async checkDishOwner(ownerId: number, dishId: number) {}
+  // async checkDishOwner(ownerId: number, dishId: number) {}
 
   async editDish(
     owner: User,
