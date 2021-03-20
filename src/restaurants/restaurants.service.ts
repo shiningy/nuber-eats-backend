@@ -145,7 +145,7 @@ export class RestaurantService {
       }
       const restaurants = await this.restaurants.find({
         where: {
-          category, 
+          category,
         },
         order: {
           isPromoted: 'DESC',
