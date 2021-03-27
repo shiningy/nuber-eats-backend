@@ -155,26 +155,32 @@ export class RestaurantService {
       });
       category.restaurants = restaurants;
       const totalResults = await this.countRestaurants(category);
-      return { ok: true, category, totalPages: Math.ceil(totalResults / 25) };
+      return {
+        ok: true,
+        category,
+        restaurants,
+        totalPages: Math.ceil(totalResults / 25),
+        totalResults,
+      };
     } catch {
       return { ok: false, error: 'Could not load category' };
     }
   }
 
   async allRestaurants({ page }: RestaurantsInput): Promise<RestaurantsOutput> {
+    const takePages = 6;
     try {
       const [restaurants, totalResults] = await this.restaurants.findAndCount({
-        skip: (page - 1) * 25,
-        take: 25,
+        skip: (page - 1) * takePages,
+        take: takePages,
         order: {
           isPromoted: 'DESC',
         },
-        relations: ['category']
       });
       return {
         ok: true,
         results: restaurants,
-        totalPages: Math.ceil(totalResults / 25),
+        totalPages: Math.ceil(totalResults / takePages),
         totalResults,
       };
     } catch {
